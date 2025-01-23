@@ -1,0 +1,24 @@
+body{
+    width: 100%;
+    
+}
+
+.carossel{
+    display: grid;
+    grid-auto-flow: column;
+    gap: 1.2rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.card{
+    min-width: 450px;
+    scroll-snap-align: center;
+    border-radius: 35px;
+}
+
+.card-previsao{
+    overflow: hidden;
+}

@@ -1,0 +1,141 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>Previsão do Tempo</title>
+</head>
+
+<body class="bg-body-secondary" data-bs-theme="dark">
+    <div class="container">
+    <div>
+        <h1 class="display-3 text-center pt-2">Previsão do Tempo</h1>
+    </div>
+    <!-- Card dia atual -->
+    <div class=" row d-flex justify-content-center py-5">
+        <div class="col-8">
+
+            <div class="card text-body" style=" border-radius: 35px;">
+                <div class="card-body p-4">
+
+                    <div class="d-flex">
+                        <h6 class="flex-grow-1">{{ hoje.city }}</h6>
+                        <h6>{{ hoje.date}}</h6>
+                    </div>
+
+                    <div class="d-flex flex-column text-center mt-5 mb-4">
+                        <h6 class="display-3 mb-0 font-weight-bold"> {{ hoje.temp }} °C</h6>
+                        <span class="small" style="color: #868B94">{{ hoje.description}}</span>
+                    </div>
+
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1" style="font-size: 1rem;">
+                            <div>
+                                <i class="fas fa-wind fa-fw" style="color: #868B94;"></i> 
+                                <span class="ms-1"> {{ hoje.wind_speedy }}</span>
+                            </div>
+                            <div>
+                                <i class="fas fa-cloud-rain fa-fw" style="color: #868B94;"></i> <span
+                                    class="ms-1">{{previsao.0.rain_probability}}%</span>
+                            </div>
+                            <div>
+                                <i class="fas fa-sun fa-fw" style="color: #868B94;"></i> <span class="ms-1">
+                                    {{hoje.sunrise}}</span>
+                            </div>
+                            <div>
+                                <i class="fas fa-moon fa-fw" style="color: #868B94;"></i> <span class="ms-1">
+                                    {{hoje.sunset}}</span>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="https://assets.hgbrasil.com/weather/icons/conditions/{{ hoje.condition_slug }}.svg"
+                                width="100px">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Fim Card dia atual -->
+    </div>  
+    <!-- Card previsão -->
+    <div class="cards-p">
+        <div class="container2">
+            <div class="carossel">
+                {% for dia in previsao %}
+                    {% if forloop.counter != 1 %}
+                            <div class="col-4">
+                                <div class="card d-flex-inline">
+
+                                    <div class="card text-body" style=" border-radius: 35px;">
+                                        <div class="card-body p-4">
+
+                                            <div class="text-center">
+                                                <h4>{{dia.date}}</h4>
+                                            </div>
+
+                                            <div class="d-flex flex-column text-center mt-5 mb-4">
+                                                <h6 class="display-4 mb-0 font-weight-bold"> <i class="fas fa-temperature-full fa-fw" style="color: #d45c3e;"></i>{{dia.max}}°C</h6>
+                                                <h6 class="display-4 mb-0 font-weight-bold"> <i class="fas fa-temperature-half fa-fw" style="color: #2f61be;"></i>{{dia.min}}°C</h6>
+                                            </div>
+
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1" style="font-size: 1rem;">
+                                                    <div>
+                                                <i class="fas fa-sun fa-fw" style="color: #868B94;"></i> <span class="ms-1">
+                                                    {{dia.sunrise}}</span>
+                                            </div>
+                                            <div>
+                                                <i class="fas fa-moon fa-fw" style="color: #868B94;"></i> <span class="ms-1">
+                                                    {{dia.sunset}}</span>
+                                            </div>
+                                            <div>
+                                                <i class="fas fa-cloud-rain fa-fw" style="color: #868B94;"></i> <span
+                                                    class="ms-1">{{dia.rain_probability}}%</span>
+                                            </div>
+                                                </div>
+                                                <div>
+                                                    <img src="https://assets.hgbrasil.com/weather/icons/conditions/{{dia.condition}}.svg"
+                                                        width="100px">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                
+                                </div>
+                            </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <h5 class="mt-3 text-center"> >>> Shift + Scroll >>> </h5>
+    <!-- Fim Card previsão -->
+
+
+        <a id="btn" class="btn text-white btn-lg btn-floating position-absolute top-0 end-0 m-3 " data-mdb-ripple-init style="background-color: #ffffff;" role="button" onclick="trade_theme()">
+            <i id="icon" class="fa-regular fa-sun" style="color:#868B94"></i>
+        </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    
+        <script src="{% static 'js/script.js' %}">
+            
+        </script>
+    
+</body>
+
+</html>
