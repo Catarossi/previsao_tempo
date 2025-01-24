@@ -1,4 +1,3 @@
-```markdown
 # Minha Aplicação Django
 
 Este repositório contém uma aplicação desenvolvida com o framework Django.
@@ -25,11 +24,10 @@ e a previsão para os próximos dias
 
 Certifique-se de ter as seguintes ferramentas instaladas antes de executar a aplicação:
 
-- Python: https://www.python.org/
+- Python ([link para o site oficial do Python](https://www.python.org/))
 - Pipenv ou Virtualenv (opcional, mas recomendado para gerenciamento de dependências)
-- Git: https://git-scm.com/
+- Git ([link para o site oficial do Git](https://git-scm.com/))
 
-```
 ## Instalação
 
 Siga os passos abaixo para executar a aplicação localmente:
