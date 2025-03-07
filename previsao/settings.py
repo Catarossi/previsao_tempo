@@ -28,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['seu-projeto.onrender.com']
+ALLOWED_HOSTS = ['previsao-tempo-9lo7.onrender.com']
 
 
 # Application definition
