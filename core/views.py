@@ -6,6 +6,8 @@ def index(request):
     previsao = requests.get('https://api.hgbrasil.com/weather')
     previsao = previsao.json()
 
+    print("Resposta da API:", previsao)
+
     context = {
         'hoje':previsao['results'],
         'previsao': previsao['results']['forecast']
