@@ -26,7 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
+API_KEY = config('HG_API_KEY')
 
 ALLOWED_HOSTS = ['previsao-tempo-9lo7.onrender.com', '127.0.0.1']
 
